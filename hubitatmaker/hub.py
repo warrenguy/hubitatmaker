@@ -96,7 +96,7 @@ class Hub:
         communicating with the hub.
         """
         if self._conn is None:
-            self._conn = aiohttp.TCPConnector(ssl=False)
+            self._conn = aiohttp.TCPConnector(ssl=(self.scheme == "https"))
 
         try:
             await self._check_api()
@@ -111,7 +111,7 @@ class Hub:
         before this method has completed.
         """
         if self._conn is None:
-            self._conn = aiohttp.TCPConnector(ssl=False)
+            self._conn = aiohttp.TCPConnector(ssl=(self.scheme == "https"))
 
         try:
             await self._start_server()

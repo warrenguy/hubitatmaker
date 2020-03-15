@@ -62,7 +62,7 @@ class Hub:
         self.token = access_token
         self.base_url = f"{self.scheme}://{self.host}"
         self.api_url = f"{self.base_url}/apps/api/{app_id}"
-        self.mac = _get_mac_address(self.host)
+        self.mac = _get_mac_address(self.host) or ""
 
         self._devices: Dict[str, Device] = {}
         self._listeners: Dict[str, List[Listener]] = {}
